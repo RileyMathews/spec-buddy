@@ -11,12 +11,12 @@ export default class SpecBuddy {
   }
 
   private file_open_callback(document: vscode.TextDocument) {
-    const document_path = document.fileName;
-    if (document_path.substring(document_path.length - 3) !== ".rb" || document_path.includes("spec")) {
+    if (vscode.workspace.getConfiguration('specBuddy').get('active') === false) {
       return;
     }
 
-    if (vscode.workspace.getConfiguration('specBuddy').get('active') === false) {
+    const document_path = document.fileName;
+    if (document_path.substring(document_path.length - 3) !== ".rb" || document_path.includes("spec")) {
       return;
     }
 

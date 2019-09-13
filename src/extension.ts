@@ -5,6 +5,20 @@ import * as vscode from 'vscode';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	vscode.workspace.onDidOpenTextDocument((document) => {
+		const document_path = document.fileName;
+		if (document_path.substring(document_path.length - 3) !== ".rb" || document_path.includes("spec")) {
+			return;
+		}
+
+		const root = vscode.workspace.workspaceFolders || [];
+		const root_path = root[0].uri.path;
+		const root_relative_path = document_path.replace(root_path, "");
+		const spec_file_path = `${root_path}/spec${root_relative_path.replace('.rb', '_spec.rb')}`;
+		vscode.workspace.openTextDocument(vscode.Uri.file(spec_file_path)).then(doc => {
+			vscode.window.showTextDocument(doc, vscode.ViewColumn.Beside, true);
+		});
+	});
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated

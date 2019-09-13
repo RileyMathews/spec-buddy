@@ -7,23 +7,25 @@ export default class SpecBuddy {
   }
 
   private add_listener() {
-    vscode.workspace.onDidOpenTextDocument((document) => {
-      const document_path = document.fileName;
-      if (document_path.substring(document_path.length - 3) !== ".rb" || document_path.includes("spec")) {
-        return;
-      }
-  
-      if (vscode.workspace.getConfiguration('specBuddy').get('active') === false) {
-        return;
-      }
-  
-      const root = vscode.workspace.workspaceFolders || [];
-      const root_path = root[0].uri.path;
-      const root_relative_path = document_path.replace(root_path, "");
-      const spec_file_path = `${root_path}/spec${root_relative_path.replace('.rb', '_spec.rb')}`;
-      vscode.workspace.openTextDocument(vscode.Uri.file(spec_file_path)).then(doc => {
-        vscode.window.showTextDocument(doc, vscode.ViewColumn.Beside, true);
-      });
+    vscode.workspace.onDidOpenTextDocument(this.file_open_callback);
+  }
+
+  private file_open_callback(document: vscode.TextDocument) {
+    const document_path = document.fileName;
+    if (document_path.substring(document_path.length - 3) !== ".rb" || document_path.includes("spec")) {
+      return;
+    }
+
+    if (vscode.workspace.getConfiguration('specBuddy').get('active') === false) {
+      return;
+    }
+
+    const root = vscode.workspace.workspaceFolders || [];
+    const root_path = root[0].uri.path;
+    const root_relative_path = document_path.replace(root_path, "");
+    const spec_file_path = `${root_path}/spec${root_relative_path.replace('.rb', '_spec.rb')}`;
+    vscode.workspace.openTextDocument(vscode.Uri.file(spec_file_path)).then(doc => {
+      vscode.window.showTextDocument(doc, vscode.ViewColumn.Beside, true);
     });
   }
 

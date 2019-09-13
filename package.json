@@ -1,6 +1,7 @@
 {
 	"name": "spec-buddy",
 	"displayName": "spec_buddy",
+	"publisher": "rileymathews",
 	"description": "Keeps your spec files open as you open and close source code.",
 	"version": "0.0.1",
 	"engines": {

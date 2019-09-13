@@ -10,16 +10,35 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.activate",
+				"command": "specBuddy.activate",
 				"title": "Activate Spec Buddy"
+			},
+			{
+				"command": "specBuddy.on",
+				"title": "Turn On Spec Buddy"
+			},
+			{
+				"command": "specBuddy.off",
+				"title": "Turn Off Spec Buddy"
 			}
-		]
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Spec Buddy Configuration",
+			"properties": {
+				"specBuddy.active": {
+					"type": "boolean",
+					"default": false,
+					"description": "Is the extension on"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

@@ -11,6 +11,10 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
+		if (vscode.workspace.getConfiguration('specBuddy').get('active') === false) {
+			return;
+		}
+
 		const root = vscode.workspace.workspaceFolders || [];
 		const root_path = root[0].uri.path;
 		const root_relative_path = document_path.replace(root_path, "");
@@ -35,6 +39,20 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	// config
+	let turnOn = vscode.commands.registerCommand('specBuddy.on', () => {
+		const config = vscode.workspace.getConfiguration('specBuddy');
+		config.update('active', true, true);
+	});
+
+	let turnOff = vscode.commands.registerCommand('specBuddy.off', () => {
+		const config = vscode.workspace.getConfiguration('specBuddy');
+		config.update('active', false, true);
+	});
+
+	context.subscriptions.push(turnOn);
+	context.subscriptions.push(turnOff);
 }
 
 // this method is called when your extension is deactivated

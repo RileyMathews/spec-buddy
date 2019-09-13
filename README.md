@@ -1,7 +1,5 @@
 # spec-buddy README
 
-This is the README for your extension "spec-buddy". After writing up a brief description, we recommend including the following sections.
-
 ## Features
 
 Use the VS code command `cmd + shift + p` and search for `spec buddy`. You can turn the extension on and off there. Or in your VS Code settings.

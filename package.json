@@ -18,16 +18,8 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "specBuddy.activate",
-				"title": "Activate Spec Buddy"
-			},
-			{
-				"command": "specBuddy.on",
-				"title": "Turn On Spec Buddy"
-			},
-			{
-				"command": "specBuddy.off",
-				"title": "Turn Off Spec Buddy"
+				"command": "specBuddy.openSpec",
+				"title": "Open Spec File"
 			}
 		],
 		"configuration": {

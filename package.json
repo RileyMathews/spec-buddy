@@ -1,10 +1,10 @@
 {
 	"name": "spec-buddy",
-	"displayName": "spec_buddy",
+	"displayName": "Spec Buddy",
 	"publisher": "rileymathews",
 	"description": "Keeps your spec files open as you open and close source code.",
 	"repository": "https://github.com/RileyMathews/spec-buddy",
-	"version": "0.1.0",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
@@ -21,18 +21,7 @@
 				"command": "specBuddy.openSpec",
 				"title": "Open Spec File"
 			}
-		],
-		"configuration": {
-			"type": "object",
-			"title": "Spec Buddy Configuration",
-			"properties": {
-				"specBuddy.active": {
-					"type": "boolean",
-					"default": false,
-					"description": "Is the extension on"
-				}
-			}
-		}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: install dependencies
+      run: npm install
+    steps:
+    - name: publish package
+      run: npx vsce publish

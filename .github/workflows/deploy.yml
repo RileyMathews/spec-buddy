@@ -17,4 +17,4 @@ jobs:
     - name: install dependencies
       run: npm install
     - name: publish package
-      run: npx vsce publish
+      run: npx vsce publish -p ${{ secrets.VSCE_PUBLISHER_TOKEN }}

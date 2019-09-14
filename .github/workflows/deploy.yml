@@ -15,6 +15,5 @@ jobs:
     steps:
     - name: install dependencies
       run: npm install
-    steps:
     - name: publish package
       run: npx vsce publish

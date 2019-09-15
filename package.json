@@ -4,7 +4,7 @@
 	"publisher": "rileymathews",
 	"description": "Keeps your spec files open as you open and close source code.",
 	"repository": "https://github.com/RileyMathews/spec-buddy",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.38.0"
 	},

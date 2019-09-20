@@ -23,7 +23,8 @@ export default class SpecBuddy {
 
     const file_name = path.basename(document.fileName, path.extname(document.fileName));
     vscode.workspace.findFiles(`{spec,specs,test,tests}/**/*${file_name}*`).then(result => {
-      vscode.workspace.openTextDocument(vscode.Uri.file(result[0].path)).then(doc => {
+      const file_to_open: vscode.Uri = this.fileUtil.get_most_likely_spec_file(file_name, result);
+      vscode.workspace.openTextDocument(vscode.Uri.file(file_to_open.path)).then(doc => {
         vscode.window.showTextDocument(doc, vscode.ViewColumn.Beside, true);
       });
     });
